@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Control de Ingresos y Egresos</title>
+</head>
+<body>
+    <h1>Mi Control de Ingresos y Egresos</h1>
+
+    <form id="formulario">
+        <div class="formatoForm">
+            <label for="tipo">Tipo:</label>
+            <select id="tipo" name="tipo">
+                <option value="gasto">Gasto</option>
+                <option value="ingreso">Ingreso</option>
+            </select>
+        </div>
+        <div class="formatoForm">
+            <label for="descripcion">Descripción:</label>
+            <input type="text" id="descripcion" name="descripcion">
+        </div>
+        <div class="formatoForm">
+            <label for="categoria">Categoría:</label>
+            <input type="text" id="categoria" name="categoria">
+        </div>
+        <div class="formatoForm">
+            <label for="monto">Monto:</label>
+            <input type="number" id="monto" name="monto">
+        </div>
+        <button type="submit">Registrar</button>
+    </form>
+
+
+    <div class="formatoTabla">
+        <table id="tablaTransacciones">
+            <tr>
+                <th>Tipo</th>
+                <th>Descripción</th>
+                <th>Categoría</th>
+                <th>Monto</th>
+            </tr>
+            <tr>
+                <td>Ingreso</td>
+                <td>Sueldo</td>
+                <td>Trabajo</td>
+                <td>1000</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+</html>
