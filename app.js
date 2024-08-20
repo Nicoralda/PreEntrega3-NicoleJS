@@ -1,3 +1,17 @@
+// Uso de mi API del precio del dólar en Venezuela
+
+fetch("https://ve.dolarapi.com/v1/dolares/oficial")
+    .then(response => response.json())
+    .then(data => {
+        const promedio = data.promedio;
+        const elementoPromedio = document.querySelector('.promedio');
+        elementoPromedio.textContent = `Bs. ${promedio}`;
+    })
+    .catch(error => {
+        console.error('Error al obtener los datos:', error);
+    });
+
+
 // Función para agregar una fila a una tabla
 
 function addRowToTable(tableId, transaction) {
@@ -132,3 +146,5 @@ window.onload = () => {
     loadTransactions("tablaTransacciones");
     loadTransactions("tablaTransaccionesGastos");
 };
+
+
