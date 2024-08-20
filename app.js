@@ -1,4 +1,5 @@
 // Función para agregar una fila a una tabla
+
 function addRowToTable(tableId, transaction) {
     const table = document.getElementById(tableId);
     const newRow = table.insertRow(-1);
@@ -11,6 +12,7 @@ function addRowToTable(tableId, transaction) {
 }
 
 // Función para "manejar" el envío de un formulario
+
 function handleFormSubmit(formId, tableId) {
     const form = document.getElementById(formId);
     const table = document.getElementById(tableId);
@@ -40,17 +42,20 @@ function handleFormSubmit(formId, tableId) {
 }
 
 // Asociar las funciones a cada formulario
+
 handleFormSubmit("formularioIngresos", "tablaTransaccionesIngresos");
 handleFormSubmit("formulario", "tablaTransacciones"); 
 handleFormSubmit("formularioGastos", "tablaTransaccionesGastos");
 
 // Función para cargar transacciones desde el localStorage
+
 function loadTransactions(tableId) {
     const transactions = JSON.parse(localStorage.getItem(tableId)) || [];
     transactions.forEach(transaction => addRowToTable(tableId, transaction));
 }
 
 // Cargar las transacciones al cargar la página
+
 window.onload = () => {
     loadTransactions("tablaTransaccionesIngresos");
     loadTransactions("tablaTransacciones");
