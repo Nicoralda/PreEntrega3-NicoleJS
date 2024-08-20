@@ -24,7 +24,7 @@ function deleteRow(tableId, row) {
 
     // Actualizar el localStorage
     const transactions = JSON.parse(localStorage.getItem(tableId)) || [];
-    transactions.splice(row.rowIndex - 1, 1); // Ajustar el índice si hay un encabezado
+    transactions.splice(row.rowIndex - 1, 1); // Ajustará el índice si hay un encabezado
     localStorage.setItem(tableId, JSON.stringify(transactions));
 }
 
@@ -45,24 +45,78 @@ function handleFormSubmit(formId, tableId) {
             monto: formData.get('monto'),
         };
 
-        // Agregar la nueva transacción al localStorage
+        // Agregará la nueva transacción al localStorage
         const transactions = JSON.parse(localStorage.getItem(tableId)) || [];
         transactions.push(newTransaction);
         localStorage.setItem(tableId, JSON.stringify(transactions));
 
-        // Agregar la nueva fila a la tabla
+        // Agregará la nueva fila a la tabla
         addRowToTable(tableId, newTransaction);
 
-        // Limpiar el formulario
-        form.reset();
+        // Actualizará la tabla de balance
+        updateBalanceTable();
     });
 }
 
-// Asociar las funciones a cada formulario
+// Asociando las funciones a cada formulario
 
 handleFormSubmit("formularioIngresos", "tablaTransaccionesIngresos");
 handleFormSubmit("formulario", "tablaTransacciones"); 
 handleFormSubmit("formularioGastos", "tablaTransaccionesGastos");
+
+// Función para calcular el balance. Primero suma todos los ingresos
+
+function calculateTotalIngresos() {
+    const ingresosTable = document.getElementById('tablaTransaccionesIngresos');
+    let totalIngresos = 0;
+
+    for (let i = 1; i < ingresosTable.rows.length; i++) {
+        const montoCell = ingresosTable.rows[i].cells[2];
+        totalIngresos += parseFloat(montoCell.textContent);
+    }
+    return totalIngresos;
+}
+
+// Luego, suma los egresos 
+function calculateTotalEgresos() {
+    const egresosTable = document.getElementById('tablaTransacciones');
+    const gastosTable = document.getElementById('tablaTransaccionesGastos');
+    let totalEgresos = 0;
+
+    // Sumar egresos y gastos
+    for (let i = 1; i < egresosTable.rows.length; i++) {
+        const montoCell = egresosTable.rows[i].cells[2];
+        totalEgresos += parseFloat(montoCell.textContent);
+    }
+    for (let i = 1; i < gastosTable.rows.length; i++) {
+        const montoCell = gastosTable.rows[i].cells[2];
+        totalEgresos += parseFloat(montoCell.textContent);
+    }
+    return totalEgresos;
+}
+
+function calculateBalance() {
+    const totalIngresos = calculateTotalIngresos();
+    const totalEgresos = calculateTotalEgresos();
+    return totalIngresos - totalEgresos;
+}
+
+// Actualizar la tabla del balance
+
+function updateBalanceTable() {
+    const balanceTable = document.getElementById('tablaBalance');
+    const totalIngresos = calculateTotalIngresos();
+    const totalEgresos = calculateTotalEgresos();
+    const balance = calculateBalance();
+
+    balanceTable.innerHTML = `
+    <tr>
+        <th>Ingresos totales: ${totalIngresos.toFixed(2)}</th>
+        <th>Egresos totales: ${totalEgresos.toFixed(2)}</th>
+        <th>Tu adicional: ${balance.toFixed(2)}</th>
+    </tr>
+    `;
+}
 
 // Función para cargar transacciones desde el localStorage
 
