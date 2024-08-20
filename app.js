@@ -11,6 +11,34 @@ fetch("https://ve.dolarapi.com/v1/dolares/oficial")
         console.error('Error al obtener los datos:', error);
     });
 
+// Usando SweetAlert para los tres botones del registro
+
+function mostrarSweetAlert() {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+    Toast.fire({
+        icon: "success",
+        title: "¡Registrado con éxito!"
+    });
+}
+
+const boton1 = document.getElementById('btnRegistrar');
+const boton2 = document.getElementById('btnRegistrar2');
+const boton3 = document.getElementById('btnRegistrar3');
+
+boton1.addEventListener('click', mostrarSweetAlert);
+boton2.addEventListener('click', mostrarSweetAlert);
+boton3.addEventListener('click', mostrarSweetAlert);
+
 
 // Función para agregar una fila a una tabla
 
