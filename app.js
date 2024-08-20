@@ -9,6 +9,23 @@ function addRowToTable(tableId, transaction) {
         const newCell = newRow.insertCell();
         newCell.textContent = transaction[cell];
     });
+
+    // Nueva celda para el botón "Eliminar"
+    const deleteCell = newRow.insertCell();
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "X";
+    deleteButton.addEventListener("click", () => deleteRow(tableId, newRow));
+    deleteCell.appendChild(deleteButton);
+}
+
+function deleteRow(tableId, row) {
+    const table = document.getElementById(tableId);
+    table.deleteRow(row.rowIndex);
+
+    // Actualizar el localStorage
+    const transactions = JSON.parse(localStorage.getItem(tableId)) || [];
+    transactions.splice(row.rowIndex - 1, 1); // Ajustar el índice si hay un encabezado
+    localStorage.setItem(tableId, JSON.stringify(transactions));
 }
 
 // Función para "manejar" el envío de un formulario
