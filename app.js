@@ -6,7 +6,7 @@ const transactionTable = document.getElementById("tablaTransacciones");
 function addTransactionRow(transaction) {
     const newRow = transactionTable.insertRow(-1);
 
-    const cells = ["tipo", "descripcion", "categoria", "monto"];
+    const cells = ["tipo", "descripcion", "monto"];
     cells.forEach(cell => {
         const newCell = newRow.insertCell();
         newCell.textContent = transaction[cell];
@@ -30,7 +30,6 @@ form.addEventListener("submit", (event) => {
     const newTransaction = {
         tipo: formData.get('tipo'),
         descripcion: formData.get('descripcion'),
-        categoria: formData.get('categoria'),
         monto: formData.get('monto'),
     };
 

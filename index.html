@@ -7,50 +7,177 @@
     <title>Control de Ingresos y Egresos</title>
 </head>
 <body>
-    <h1>Mi Control de Ingresos y Egresos</h1>
 
-    <form id="formulario">
-        <div class="formatoForm">
-            <label for="tipo">Tipo:</label>
-            <select id="tipo" name="tipo">
-                <option value="gasto">Gasto</option>
-                <option value="ingreso">Ingreso</option>
-            </select>
+<!--Navbar-->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Nombre</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link active" aria-current="page" href="#segundoTramo">Consejos</a>
+                    <a class="nav-link" href="#misIngresos">Ingresos</a>
+                    <a class="nav-link" href="#misEgresos">Egresos variables</a>
+                    <a class="nav-link" href="#misGastos">Gastos fijos</a>
+                    <a class="nav-link" href="#">Descubre</a>
+                </div>
+            </div>
         </div>
-        <div class="formatoForm">
-            <label for="descripcion">Descripción:</label>
-            <input type="text" id="descripcion" name="descripcion">
-        </div>
-        <div class="formatoForm">
-            <label for="categoria">Categoría:</label>
-            <input type="text" id="categoria" name="categoria">
-        </div>
-        <div class="formatoForm">
-            <label for="monto">Monto:</label>
-            <input type="number" id="monto" name="monto">
-        </div>
-        <button type="submit">Registrar</button>
-    </form>
+    </nav>
 
 
-    <div class="formatoTabla">
-        <table id="tablaTransacciones">
+    <section id="PrimerTramo">
+        <h1>Domina tus finanzas</h1>
+        <p>Consejos prácticos para organizar tu dinero. Alcanza tus metas financieras</p>
+    </section>
+
+
+    <section id="segundoTramo">
+        <div class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                    content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="misIngresos">
+        <h2>Mis ingresos fijos y variables</h2>
+        <form id="formularioIngresos">
+            <div class="formatoFormIngresos">
+                <label for="tipo">Tipo:</label>
+                <select id="tipoIng" name="tipoIng">
+                    <option value="Salario">Salario</option>
+                    <option value="Pensión">Pensión</option>
+                    <option value="Rentas">Rentas</option>
+                    <option value="Intereses">Intereses</option>
+                    <option value="Horas extras">Horas extras</option>
+                    <option value="Bonos o propinas">Bonos o propinas</option>
+                </select>
+            </div>
+            <div class="formatoFormIngresos">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcionIng" name="descripcionIng">
+            </div>
+            <div class="formatoFormIngresos">
+                <label for="monto">Monto:</label>
+                <input type="number" id="montoIng" name="montoIng">
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+    
+        <div class="formatoTablaIngresos">
+            <table id="tablaTransaccionesIngresos">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <section id="misEgresos">
+        <h2>Mis egresos variables</h2>
+        <form id="formulario">
+            <div class="formatoForm">
+                <label for="tipo">Tipo:</label>
+                <select id="tipo" name="tipo">
+                    <option value="Alimentación">Alimentación</option>
+                    <option value="Transporte">Transporte</option>
+                    <option value="Entretenimiento">Entretenimiento</option>
+                    <option value="Ropa y calzado">Ropa y calzado</option>
+                    <option value="Regalos">Regalos</option>
+                    <option value="Salud">Salud</option>
+                    <option value="Mantenimiento del hogar">Mantenimiento del hogar</option>
+                </select>
+            </div>
+            <div class="formatoForm">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" name="descripcion">
+            </div>
+            <div class="formatoForm">
+                <label for="monto">Monto:</label>
+                <input type="number" id="monto" name="monto">
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+    
+        <div class="formatoTabla">
+            <table id="tablaTransacciones">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                </tr>
+                <tr>
+                    <td>Ingreso</td>
+                    <td>Trabajo</td>
+                    <td>1000</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+
+    <section id="misGastos">
+        <h2>Mis gastos fijos</h2>
+        <form id="formularioGastos">
+            <div class="formatoFormGastos">
+                <label for="tipo">Tipo:</label>
+                <select id="tipoGastos" name="tipoGastos">
+                    <option value="Alquiler o hipoteca">Alquiler o hipoteca</option>
+                    <option value="Servicios básicos">Servicios básicos</option>
+                    <option value="Seguros">Seguros</option>
+                    <option value="Suscripciones">Suscripciones</option>
+                    <option value="Préstamos">Préstamos</option>
+                    <option value="Cuotas">Cuotas</option>
+                </select>
+            </div>
+            <div class="formatoFormGastos">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcionGastos" name="descripcionGastos">
+            </div>
+            <div class="formatoFormGastos">
+                <label for="monto">Monto:</label>
+                <input type="number" id="montoGastos" name="montoGastos">
+            </div>
+            <button type="submit">Registrar</button>
+        </form>
+    
+        <div class="formatoTablaGastos">
+            <table id="tablaTransaccionesGastos">
+                <tr>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Monto</th>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <h3>Balance</h3>
+    <div class="formatoBalance">
+        <table id="tablaBalance">
             <tr>
-                <th>Tipo</th>
-                <th>Descripción</th>
-                <th>Categoría</th>
-                <th>Monto</th>
-            </tr>
-            <tr>
-                <td>Ingreso</td>
-                <td>Sueldo</td>
-                <td>Trabajo</td>
-                <td>1000</td>
+                <th>Ingresos</th>
+                <th>Gastos</th>
+                <th>Total</th>
             </tr>
         </table>
     </div>
 
-
+<!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<!--Javascript-->
     <script src="app.js"></script>
 </body>
 </html>
