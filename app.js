@@ -174,5 +174,3 @@ window.onload = () => {
     loadTransactions("tablaTransacciones");
     loadTransactions("tablaTransaccionesGastos");
 };
-
-
