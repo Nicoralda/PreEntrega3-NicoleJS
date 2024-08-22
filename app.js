@@ -147,7 +147,7 @@ function calculateBalance() {
     return totalIngresos - totalEgresos;
 }
 
-// Actualizar la tabla del balance
+// Actualizar balance
 
 function updateBalanceTable() {
     const balanceTable = document.getElementById('tablaBalance');
