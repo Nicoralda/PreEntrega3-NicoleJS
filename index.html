@@ -3,40 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<!--CSS-->
     <link rel="stylesheet" href="./style/style.css">
     <title>Control de Ingresos y Egresos</title>
 </head>
 <body>
 
-<!--Navbar-->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">Nombre</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#segundoTramo">Consejos</a>
-                    <a class="nav-link" href="#misIngresos">Ingresos</a>
-                    <a class="nav-link" href="#misEgresos">Egresos variables</a>
-                    <a class="nav-link" href="#misGastos">Gastos fijos</a>
-                    <a class="nav-link" href="#">Descubre</a>
-                </div>
-            </div>
+    <header>
+        <h1>PocketPlan</h1>
+    </header>
+
+    <div class="contenido">
+        <div class="contenidoIzquierda">
+            <p>Tu dinero bajo control. La app que necesitas para alcanzar tus metas financieras</p>
+            <h2 class="primerH2">Domina tus finanzas</h2>
+            <p>La planificación es la clave de todo y en términos de finanzas es la guía que te llevará a alcanzar metas
+                financieras sólidas y seguras</p>
+            <a href="#" class="btn primary__btn">¿Por qué debería hacer esto?</a>
+            <a href="#" class="btn secondary__btn">Empieza ya a organizar tus finanzas</a>
         </div>
-    </nav>
+        <div class="contenidoDerecha">
+            <img class="imagenDerecha" src="./images/PocketPlan.png" alt="">
+        </div>
+    </div>
 
 
-    <section id="primerTramo">
-        <h1>Domina tus finanzas</h1>
-        <p>La planificación es la clave de todo y en términos de finanzas es la guía que te llevará a alcanzar metas financieras sólidas y seguras</p>
-    </section>
-
-
-    <section id="segundoTramo">
-        <h2>Consejos prácticos para organizar tu dinero. Alcanza tus metas financieras</h2>
+    <section class="segundoTramo">
+        <div class="segundoContenido">
+            <p>Toma decisiones inteligentes</p>
+            <h3 class="primerH3">¡Dile adiós a los imprevistos!<br>Planifica tu presupuesto y evita sorpresas</h3>
+        </div>
         <div class="container-cards">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
@@ -70,135 +68,147 @@
 
 
     <section id="API">
-        <h3>El precio del dólar hoy en Venezuela es:</h3>
+        <h3 class="segundoH3">El precio del dólar hoy en Venezuela es:</h3>
         <p class="promedio"></p>
     </section>
 
 
     <section id="misIngresos">
-        <h2>Mis ingresos fijos y variables</h2>
-        <form id="formularioIngresos">
-            <div class="formatoFormIngresos">
-                <label for="tipo">Tipo:</label>
-                <select id="tipo" name="tipo">
-                    <option value="Salario">Salario</option>
-                    <option value="Pensión">Pensión</option>
-                    <option value="Rentas">Rentas</option>
-                    <option value="Intereses">Intereses</option>
-                    <option value="Horas extras">Horas extras</option>
-                    <option value="Bonos o propinas">Bonos o propinas</option>
-                </select>
-            </div>
-            <div class="formatoFormIngresos">
-                <label for="descripcion">Descripción:</label>
-                <input type="text" id="descripcion" name="descripcion">
-            </div>
-            <div class="formatoFormIngresos">
-                <label for="monto">Monto:</label>
-                <input type="number" id="monto" name="monto">
-            </div>
-            <button type="submit" id="btnRegistrar">Registrar</button>
-        </form>
+        <div class="misIngresosForm">
+            <h2>Mis ingresos fijos y variables</h2>
+            <form id="formularioIngresos">
+                <div class="formatoFormIngresos">
+                    <label for="tipo">Tipo:</label>
+                    <select id="tipo" name="tipo">
+                        <option value="Salario">Salario</option>
+                        <option value="Pensión">Pensión</option>
+                        <option value="Rentas">Rentas</option>
+                        <option value="Intereses">Intereses</option>
+                        <option value="Horas extras">Horas extras</option>
+                        <option value="Bonos o propinas">Bonos o propinas</option>
+                    </select>
+                </div>
+                <div class="formatoFormIngresos">
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" id="descripcion" name="descripcion">
+                </div>
+                <div class="formatoFormIngresos">
+                    <label for="monto">Monto:</label>
+                    <input type="number" id="monto" name="monto">
+                </div>
+                <button class="btn_ing" type="submit" id="btnRegistrar">Registrar</button>
+            </form>
+        </div>
     
-        <div class="formatoTablaIngresos">
-            <table id="tablaTransaccionesIngresos">
-                <tr>
-                    <th>Tipo</th>
-                    <th>Descripción</th>
-                    <th>Monto</th>
-                </tr>
-            </table>
+        <div class="misIngresosTabla">
+            <div class="formatoTablaIngresos">
+                <table id="tablaTransaccionesIngresos">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                        <th>Monto</th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </section>
 
 
     <section id="misEgresos">
-        <h2>Mis egresos variables</h2>
-        <form id="formulario">
-            <div class="formatoForm">
-                <label for="tipo">Tipo:</label>
-                <select id="tipo" name="tipo">
-                    <option value="Alimentación">Alimentación</option>
-                    <option value="Transporte">Transporte</option>
-                    <option value="Entretenimiento">Entretenimiento</option>
-                    <option value="Ropa y calzado">Ropa y calzado</option>
-                    <option value="Regalos">Regalos</option>
-                    <option value="Salud">Salud</option>
-                    <option value="Mantenimiento del hogar">Mantenimiento del hogar</option>
-                </select>
-            </div>
-            <div class="formatoForm">
-                <label for="descripcion">Descripción:</label>
-                <input type="text" id="descripcion" name="descripcion">
-            </div>
-            <div class="formatoForm">
-                <label for="monto">Monto:</label>
-                <input type="number" id="monto" name="monto">
-            </div>
-            <button type="submit" id="btnRegistrar2">Registrar</button>
-        </form>
+        <div class="misEgresosForm">
+            <h2>Mis egresos variables</h2>
+            <form id="formulario">
+                <div class="formatoForm">
+                    <label for="tipo">Tipo:</label>
+                    <select id="tipo" name="tipo">
+                        <option value="Alimentación">Alimentación</option>
+                        <option value="Transporte">Transporte</option>
+                        <option value="Entretenimiento">Entretenimiento</option>
+                        <option value="Ropa y calzado">Ropa y calzado</option>
+                        <option value="Regalos">Regalos</option>
+                        <option value="Salud">Salud</option>
+                        <option value="Mantenimiento del hogar">Mantenimiento del hogar</option>
+                    </select>
+                </div>
+                <div class="formatoForm">
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" id="descripcion" name="descripcion">
+                </div>
+                <div class="formatoForm">
+                    <label for="monto">Monto:</label>
+                    <input type="number" id="monto" name="monto">
+                </div>
+                <button class="btn_egr" type="submit" id="btnRegistrar2">Registrar</button>
+            </form>
+        </div>
     
-        <div class="formatoTabla">
-            <table id="tablaTransacciones">
-                <tr>
-                    <th>Tipo</th>
-                    <th>Descripción</th>
-                    <th>Monto</th>
-                </tr>
-            </table>
+        <div class="misEgresosTabla">
+            <div class="formatoTabla">
+                <table id="tablaTransacciones">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                        <th>Monto</th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </section>
 
 
     <section id="misGastos">
-        <h2>Mis gastos fijos</h2>
-        <form id="formularioGastos">
-            <div class="formatoFormGastos">
-                <label for="tipo">Tipo:</label>
-                <select id="tipo" name="tipo">
-                    <option value="Alquiler o hipoteca">Alquiler o hipoteca</option>
-                    <option value="Servicios básicos">Servicios básicos</option>
-                    <option value="Seguros">Seguros</option>
-                    <option value="Suscripciones">Suscripciones</option>
-                    <option value="Préstamos">Préstamos</option>
-                    <option value="Cuotas">Cuotas</option>
-                </select>
-            </div>
-            <div class="formatoFormGastos">
-                <label for="descripcion">Descripción:</label>
-                <input type="text" id="descripcion" name="descripcion">
-            </div>
-            <div class="formatoFormGastos">
-                <label for="monto">Monto:</label>
-                <input type="number" id="monto" name="monto">
-            </div>
-            <button type="submit" id="btnRegistrar3">Registrar</button>
-        </form>
+        <div class="misGastosForm">
+            <h2>Mis gastos fijos</h2>
+            <form id="formularioGastos">
+                <div class="formatoFormGastos">
+                    <label for="tipo">Tipo:</label>
+                    <select id="tipo" name="tipo">
+                        <option value="Alquiler o hipoteca">Alquiler o hipoteca</option>
+                        <option value="Servicios básicos">Servicios básicos</option>
+                        <option value="Seguros">Seguros</option>
+                        <option value="Suscripciones">Suscripciones</option>
+                        <option value="Préstamos">Préstamos</option>
+                        <option value="Cuotas">Cuotas</option>
+                    </select>
+                </div>
+                <div class="formatoFormGastos">
+                    <label for="descripcion">Descripción:</label>
+                    <input type="text" id="descripcion" name="descripcion">
+                </div>
+                <div class="formatoFormGastos">
+                    <label for="monto">Monto:</label>
+                    <input type="number" id="monto" name="monto">
+                </div>
+                <button class="btn_gst" type="submit" id="btnRegistrar3">Registrar</button>
+            </form>
+        </div>
     
-        <div class="formatoTablaGastos">
-            <table id="tablaTransaccionesGastos">
-                <tr>
-                    <th>Tipo</th>
-                    <th>Descripción</th>
-                    <th>Monto</th>
-                </tr>
-            </table>
+        <div class="misGastosTabla">
+            <div class="formatoTablaGastos">
+                <table id="tablaTransaccionesGastos">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Descripción</th>
+                        <th>Monto</th>
+                    </tr>
+                </table>
+            </div>
         </div>
     </section>
 
-    <h3>Balance</h3>
-    <div class="formatoBalance">
-        <table id="tablaBalance">
-            <tr>
-                <th>Ingresos totales</th>
-                <th>Egresos totales</th>
-                <th>Tu adicional</th>
-            </tr>
-        </table>
+    <div class="tableBalance">
+        <h2>Balance</h2>
+        <div class="formatoBalance">
+            <table id="tablaBalance">
+                <tr>
+                    <th>Ingresos totales</th>
+                    <th>Egresos totales</th>
+                    <th>Tu adicional</th>
+                </tr>
+            </table>
+        </div>
     </div>
 
-<!--Bootstrap-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <!--Sweet Alert-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!--Javascript-->
