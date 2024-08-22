@@ -1,6 +1,6 @@
 // Uso de mi API del precio del dólar en Venezuela
 
-fetch("https://ve.dolarapi.com/v1/dolares/oficial")
+fetch ("https://ve.dolarapi.com/v1/dolares/oficial")
     .then(response => response.json())
     .then(data => {
         const promedio = data.promedio;
@@ -68,6 +68,9 @@ function deleteRow(tableId, row) {
     const transactions = JSON.parse(localStorage.getItem(tableId)) || [];
     transactions.splice(row.rowIndex - 1, 1); // Ajustará el índice si hay un encabezado
     localStorage.setItem(tableId, JSON.stringify(transactions));
+
+    // Recalcular el balance
+    updateBalanceTable();
 }
 
 // Función para "manejar" el envío de un formulario
@@ -103,7 +106,7 @@ function handleFormSubmit(formId, tableId) {
 // Asociando las funciones a cada formulario
 
 handleFormSubmit("formularioIngresos", "tablaTransaccionesIngresos");
-handleFormSubmit("formulario", "tablaTransacciones"); 
+handleFormSubmit("formulario", "tablaTransacciones");
 handleFormSubmit("formularioGastos", "tablaTransaccionesGastos");
 
 // Función para calcular el balance. Primero suma todos los ingresos
@@ -119,7 +122,7 @@ function calculateTotalIngresos() {
     return totalIngresos;
 }
 
-// Luego, suma los egresos 
+// Luego, suma los egresos
 function calculateTotalEgresos() {
     const egresosTable = document.getElementById('tablaTransacciones');
     const gastosTable = document.getElementById('tablaTransaccionesGastos');
@@ -151,6 +154,17 @@ function updateBalanceTable() {
     const totalEgresos = calculateTotalEgresos();
     const balance = calculateBalance();
 
+    // Crear un objeto para almacenar el balance
+    const balanceData = {
+        totalIngresos: totalIngresos,
+        totalEgresos: totalEgresos,
+        balance: balance
+    };
+
+    // Almacenar el balance en localStorage
+    localStorage.setItem('balance', JSON.stringify(balanceData));
+
+    // Actualizar la tabla del balance
     balanceTable.innerHTML = `
     <tr>
         <th>Ingresos totales: ${totalIngresos.toFixed(2)}</th>
@@ -167,10 +181,23 @@ function loadTransactions(tableId) {
     transactions.forEach(transaction => addRowToTable(tableId, transaction));
 }
 
-// Cargar las transacciones al cargar la página
+// Función para cargar el balance desde el localStorage
+
+function loadBalance() {
+    const balanceData = JSON.parse(localStorage.getItem('balance')) || {};
+    const totalIngresos = balanceData.totalIngresos || 0;
+    const totalEgresos = balanceData.totalEgresos || 0;
+    const balance = balanceData.balance || 0;
+
+    // Actualizar la tabla del balance
+    updateBalanceTable(totalIngresos, totalEgresos, balance);
+}
+
+// Cargar las transacciones y el balance al cargar la página
 
 window.onload = () => {
     loadTransactions("tablaTransaccionesIngresos");
     loadTransactions("tablaTransacciones");
     loadTransactions("tablaTransaccionesGastos");
+    loadBalance();
 };
