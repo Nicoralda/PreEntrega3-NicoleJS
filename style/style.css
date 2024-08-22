@@ -83,7 +83,7 @@ p {
     background-color: transparent;
 }
 
-.segundoTramo {
+#segundoTramo {
     background-color: #ded8f7;
     padding: 3rem 0;
 }
@@ -228,4 +228,8 @@ th {
     border-radius: 25px;
 }
 
-
+.botonX {
+    background: none;
+    border: none;
+    color: #e261a0;
+}

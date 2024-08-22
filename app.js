@@ -56,6 +56,7 @@ function addRowToTable(tableId, transaction) {
     const deleteCell = newRow.insertCell();
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "X";
+    deleteButton.classList.add("botonX")
     deleteButton.addEventListener("click", () => deleteRow(tableId, newRow));
     deleteCell.appendChild(deleteButton);
 }
